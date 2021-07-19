@@ -1,0 +1,141 @@
+@import "../common.less";
+.alert-text {
+	position: fixed;
+	background-color: #000001;
+	color: #fffffe;
+	padding: 8px 15px;
+	max-width: 80%;
+	text-align: center;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 10px;
+}
+.confirm-alert {
+	.confirm-text-mark {
+		.box-fixed;
+		background: rgba(0, 0, 0, 0.4);
+		width: 100%;
+		height: 100%;
+		z-index: 10;
+	}
+	.confirm-content {
+		.box-fixed;
+		background-color: #fffffe;
+		width: 80%;
+		z-index: 11;
+		border-radius: 10px;
+		.confirm-content-text {
+			padding: 15px 15px 0;
+			.confirm-title {
+				font-size: 16px;
+				font-weight: 600;
+				margin-bottom: 10px;
+				text-align: center;
+			}
+			.confirm-text {
+				font-size: 14px;
+				text-align: center;
+			}
+		}
+		.modal-title {
+			font-size: 16px;
+			font-weight: 600;
+			margin: 15px 15px 10px;
+			text-align: center;
+		}
+		.confirm-content-text-other {
+			max-height: 240px;
+			overflow-y: scroll;
+		}
+		.confirm-btn {
+			display: flex;
+			border-top: 1px solid #efefef;
+			margin-top: 16px;
+			.confirm-btn-text {
+				flex: 1;
+				height: 48px;
+				line-height: 48px;
+				text-align: center;
+				color: #333;
+				position: relative;
+				font-weight: 600;
+				&:nth-child(2) {
+					color: @color-link;
+					&::after {
+						content: "";
+						width: 1px;
+						height: 48px;
+						background-color: #efefef;
+						position: absolute;
+						left: 0;
+						transform: scaleX(0.5);
+					}
+				}
+			}
+			.modal-btn-text {
+				color: @color-link;
+			}
+		}
+	}
+}
+
+// modal-page
+.modal-page-alert {
+	position: fixed;
+	bottom: 0;
+	bottom: calc(0 + env(safe-area-inset-bottom));
+	.modal-page-text-mark {
+		.box-fixed;
+		background: rgba(0, 0, 0, 0.4);
+		width: 100%;
+		height: 100%;
+		z-index: 10;
+	}
+	.modal-page-content {
+		position: fixed;
+		width: 100%;
+		min-height: 50%;
+		max-height: 70%;
+		background-color: #fffffe;
+		z-index: 11;
+		border-radius: 16px 16px 0 0;
+		.modal-page-content-text {
+			position: fixed;
+			width: 100%;
+			p {
+				font-size: 16px;
+				color: @color-text;
+				margin: 15px 15px 10px;
+				text-align: center;
+			}
+			.close-btn {
+				position: absolute;
+				width: 24px;
+				height: 24px;
+				right: 15px;
+				top: 12px;
+				transform: rotate(45deg);
+				&::after {
+					content: "";
+					position: absolute;
+					display: block;
+					width: 1px;
+					height: 100%;
+					background-color: #000001;
+					left: 12px;
+				}
+				&::before {
+					content: "";
+					position: absolute;
+					display: block;
+					width: 1px;
+					height: 100%;
+					background-color: #000001;
+					left: 12px;
+					transform: rotate(90deg);
+				}
+			}
+		}
+	}
+}

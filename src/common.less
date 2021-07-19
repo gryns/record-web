@@ -1,0 +1,54 @@
+.box-fixed {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+@color-link: #fe0000;
+@color-text: #000001;
+
+// 弹窗背景渐变
+.mark-animate {
+	animation: mark-keyframes 0.4s forwards;
+}
+@keyframes mark-keyframes {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+// 弹窗内容
+.confirm-content-animate {
+	animation: confirm-content-animate 0.4s forwards;
+}
+@keyframes confirm-content-animate {
+	0% {
+		opacity: 0;
+		top: 60%;
+		// transform: translate(-50%, -50%) scale(0.8);
+	}
+	100% {
+		opacity: 1;
+		// transform: translate(-50%, -50%) scale(1);
+		top: 50%;
+	}
+}
+
+// 底部弹窗内容
+.confirm-content-animate-down {
+	animation: confirm-content-animate-down 0.4s forwards;
+}
+@keyframes confirm-content-animate-down {
+	0% {
+		opacity: 0;
+		top: 60%;
+		// transform: translate(-50%, -50%) scale(0.8);
+	}
+	100% {
+		opacity: 1;
+		// transform: translate(-50%, -50%) scale(1);
+		top: 50%;
+	}
+}
