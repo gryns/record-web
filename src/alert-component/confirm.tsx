@@ -4,10 +4,9 @@
  * @Author: gry
  * @Date: 2021-06-30 16:18:14
  * @LastEditors: gry
- * @LastEditTime: 2021-07-16 11:14:20
+ * @LastEditTime: 2021-07-19 16:07:35
  */
 
-import React from "react";
 export interface ConfirmProps {
 	title?: string; // 标题
 	text: string; // 内容
@@ -25,7 +24,6 @@ const ConfirmD = (props: ConfirmProps) => {
 		text = "text",
 		okText = "确定",
 		cancelText = "取消",
-		runCancel = true,
 		close,
 		cancel,
 		ok = () => {},
