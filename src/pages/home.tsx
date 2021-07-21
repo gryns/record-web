@@ -11,7 +11,9 @@ export default function Home() {
 				onClick={() => {
 					dispatch({
 						type: UPDATE_COLOR,
-						value: "blue",
+						value: {
+							color: "blue",
+						},
 					});
 				}}
 			>

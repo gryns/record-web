@@ -4,13 +4,13 @@ export const UPDATE_COLOR = "UPDATE";
 export const reducer = (state, action) => {
 	switch (action.type) {
 		case "UPDATE":
-			return action.value;
+			return action.value;	
 		default:
 			return state;
 	}
 };
 export const Stores = (props) => {
-	const [value, dispatch] = useReducer(reducer, "red");
+	const [value, dispatch] = useReducer(reducer, { color: "red" });
 	return (
 		<StoresContext.Provider value={{ value, dispatch }}>
 			{props.children}

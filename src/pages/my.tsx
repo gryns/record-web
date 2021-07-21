@@ -27,6 +27,6 @@ import { useContext } from "react";
 import { StoresContext } from "../react-func01/store";
 
 export default function My() {
-	const { value } = useContext(StoresContext);
-	return <div style={{ backgroundColor: value }}>my</div>;
+	const state = useContext(StoresContext);
+	return <div>my</div>;
 }
