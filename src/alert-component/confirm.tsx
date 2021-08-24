@@ -4,18 +4,18 @@
  * @Author: gry
  * @Date: 2021-06-30 16:18:14
  * @LastEditors: gry
- * @LastEditTime: 2021-07-19 16:07:35
+ * @LastEditTime: 2021-08-07 21:31:12
  */
 
 export interface ConfirmProps {
-	title?: string; // 标题
-	text: string; // 内容
-	okText?: string; //确定文字
-	cancelText?: string; // 取消文字
-	runCancel?: boolean; //是否执行取消函数
-	cancel?: () => void;
-	close?: () => void;
-	ok?: () => void;
+	title?: string // 标题
+	text: string // 内容
+	okText?: string //确定文字
+	cancelText?: string // 取消文字
+	runCancel?: boolean //是否执行取消函数
+	cancel?: () => void
+	close?: () => void
+	ok?: () => void
 }
 
 const ConfirmD = (props: ConfirmProps) => {
@@ -25,17 +25,15 @@ const ConfirmD = (props: ConfirmProps) => {
 		okText = "确定",
 		cancelText = "取消",
 		close,
-		cancel,
 		ok = () => {},
-	} = props;
+	} = props
 	const _close = () => {
-		cancel();
-		close();
-	};
+		close()
+	}
 	const _ok = () => {
-		close();
-		ok();
-	};
+		close()
+		ok()
+	}
 	return (
 		<div className="confirm-alert">
 			<div className="confirm-text-mark mark-animate" onClick={_close}></div>
@@ -54,6 +52,6 @@ const ConfirmD = (props: ConfirmProps) => {
 				</div>
 			</div>
 		</div>
-	);
-};
-export default ConfirmD;
+	)
+}
+export default ConfirmD
