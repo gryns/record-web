@@ -12,6 +12,15 @@ class TestProps extends Component<any, any> {
 	static defaultProps = {
 		name: "yy",
 	}
+	componentDidMount() {
+		const arr: Array<any> = [1, 2, 3]
+		arr.push("1")
+		const age: number = 1
+		if (typeof age === "number") {
+			console.log("number")
+		}
+		function fn<T>() {}
+	}
 	render() {
 		return <div></div>
 	}

@@ -4,15 +4,15 @@
  * @Author: gry
  * @Date: 2021-06-29 17:06:08
  * @LastEditors: gry
- * @LastEditTime: 2021-07-08 10:41:08
+ * @LastEditTime: 2021-09-24 17:08:36
  */
 
-import React from "react";
-import "./index.less";
+import React from "react"
+import "./index.less"
 export interface AlertProps {
-	text: string;
-	close?: () => void;
-	wait?: number;
+	text: string
+	close?: () => void
+	wait?: number
 }
 
 // const AlertD = (props: AlertProps) => {
@@ -26,20 +26,20 @@ class AlertC extends React.Component<AlertProps, any> {
 		text: "text",
 		close: () => {},
 		wait: 2000,
-	};
+	}
 
 	componentDidMount() {
-		const { wait, close } = this.props;
+		const { wait, close } = this.props
 		const timer = setTimeout(() => {
-			close();
-			clearTimeout(timer);
-		}, wait);
+			close()
+			clearTimeout(timer)
+		}, wait)
 	}
 
 	render() {
-		const { text } = this.props;
-		return <div className="alert-text confirm-content-animate">{text}</div>;
+		const { text } = this.props
+		return <div className="alert-text confirm-content-animate">{text}</div>
 	}
 }
 
-export default AlertC;
+export default AlertC

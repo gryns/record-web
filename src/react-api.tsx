@@ -9,9 +9,7 @@ const ReactApi = () => {
 	let refs = React.createRef() as any
 	useEffect(() => {}, [])
 	const _click = debounce(() => {
-		Alert({
-			text: "tip",
-		})
+		Alert({})
 	})
 	const _confirm = debounce(() => {
 		Confirm({
@@ -30,6 +28,36 @@ const ReactApi = () => {
 	const clearValue = () => {
 		refs.current.innerHTML = ""
 		console.log(refs)
+	}
+	const sortFn = (a, b) => {
+		return b - a
+	}
+
+	useEffect(() => {
+		let arr = [23, 11, 33, 44, 1]
+		arr = arr.slice(1, 2)
+		console.log(arr)
+		const reg = /^\d{4}@[a-z0-9]{2,3}\.com$/
+		new Promise((resolve, reject) => {
+			console.log("promise")
+			resolve("0")
+		}).then(() => {
+			console.log("promise then")
+		})
+		fn()
+		return () => {}
+	}, [])
+
+	const fn = async () => {
+		// 1 6 8 2 7 3 4 5
+		console.log("start")
+		const a = await b()
+		console.log("end")
+		console.log(a)
+	}
+
+	const b = () => {
+		return "b"
 	}
 
 	const renderDiv = () => {
@@ -105,8 +133,9 @@ const ReactApi = () => {
 					}}
 					inputMode="decimal"
 				/>
+				<br />
 				<input
-					type="tel"
+					type="number"
 					placeholder="tel"
 					value={num}
 					onChange={(e: any) => {
@@ -117,6 +146,7 @@ const ReactApi = () => {
 							setCode(val)
 						}
 					}}
+					maxLength={6}
 				/>
 				<p>{code}</p>
 			</div>
