@@ -158,5 +158,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "redux-chunk": "^1.0.11"
   }
 }

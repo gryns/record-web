@@ -9,7 +9,7 @@ const change = (state = { ...GLOABL_COLOR }, action) => {
 		case "GLOBAL_COLOR":
 			return {
 				...state,
-				colors: action.colors,
+				color: action.colors,
 			}
 		default:
 			return state

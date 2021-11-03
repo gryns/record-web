@@ -1,7 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import App from "./react-api"
-// import App from "./react-redux-page/router"
+// import App from "./react-api"
+import App from "./react-redux-page/router"
 import reportWebVitals from "./reportWebVitals"
 
 ReactDOM.render(
