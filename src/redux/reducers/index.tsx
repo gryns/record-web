@@ -1,7 +1,6 @@
-import { colors } from "../actions"
-
 const GLOABL_COLOR = {
 	color: "red",
+	list: [],
 }
 
 const change = (state = { ...GLOABL_COLOR }, action) => {

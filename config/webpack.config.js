@@ -418,7 +418,7 @@ module.exports = function (webpackEnv) {
                             '@svgr/webpack?-svgo,+titleProp,+ref![path]',
                         },
                       },
-                    },
+                    }
                   ],
                   isEnvDevelopment &&
                   shouldUseReactRefresh &&

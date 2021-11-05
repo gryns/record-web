@@ -28,20 +28,29 @@ import { connect } from "react-redux"
 
 const My = (props) => {
 	console.log(props)
-
+	const {
+		value: { list = [], color },
+	} = props
 	return (
-		<div
-			style={{
-				backgroundColor: props.value.color,
-			}}
-		>
-			my
-		</div>
+		<>
+			<div
+				style={{
+					backgroundColor: color,
+				}}
+			>
+				my
+			</div>
+			<ul>
+				{list.map((item) => {
+					return <li>{item.name}</li>
+				})}
+			</ul>
+		</>
 	)
 }
 const mapStateToProps = (state) => {
 	return {
-		value: state.change,
+		value: { ...state },
 	}
 }
 export default connect(mapStateToProps)(My)
