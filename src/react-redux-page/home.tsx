@@ -2,38 +2,35 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { Button } from "antd-mobile"
 import { connect } from "react-redux"
+import * as globalAction from "../redux/actions"
+import * as homeAction from "./homeAction"
 const Home = function Home(props) {
-	const [list, setList] = useState([])
-	useEffect(() => {
-		// getSong()
-	}, [])
-	const getSong = () => {
-		fetch("https://autumnfish.cn/personalized")
-			.then((res) => {
-				return res.json()
-			})
-			.then((res) => {
-				setList(res.result)
-			})
-	}
+	const { bgColor, list, homeName } = props.home
+	const { editBgColor, getList, ediHometName } = props.dispatchHome
 	const renderLi = () => {
 		return list.map((item) => {
 			return <li key={item.id}>{item.name}</li>
 		})
 	}
-	const { color } = props.home
+
 	return (
 		<div>
-			<p>home</p>
+			<h1 style={{ color: bgColor }}>home</h1>
 			<Link to="/my">to my</Link>
-			<div>修改 --{color}</div>
+			<h2 style={{ color: bgColor }}>修改 --{bgColor}</h2>
 			<Button
 				color="primary"
 				onClick={() => {
-					props.dispatch({
-						type: "GLOBAL_COLOR",
-						payload: "green",
-					})
+					editBgColor("gray")
+				}}
+			>
+				修改
+			</Button>
+			<h2 style={{ color: bgColor }}>修改 --{homeName}</h2>
+			<Button
+				color="primary"
+				onClick={() => {
+					ediHometName("mm")
 				}}
 			>
 				修改
@@ -48,31 +45,50 @@ const Home = function Home(props) {
 			>
 				edit color
 			</div>
-			<div
+			<Button
+				color="primary"
 				onClick={() => {
-					fetch("https://autumnfish.cn/personalized")
-						.then((res) => {
-							return res.json()
-						})
-						.then((res) => {
-							props.dispatch({
-								type: "LIST",
-								list: res.result,
-							})
-						})
+					getList()
 				}}
 			>
-				获取请求
-			</div>
-			<h1>歌曲</h1>
+				获取歌词
+			</Button>
+			<h1 style={{ color: bgColor }}>歌曲</h1>
 			<ul>{renderLi()}</ul>
 		</div>
 	)
 }
 const mapStateToProps = (state) => {
 	return {
-		home: { ...state },
+		home: {
+			...state.home,
+			...state.homeReducer,
+		},
 	}
 }
 
-export default connect(mapStateToProps)(Home)
+const mapDispatchToProps = (dispatch) => {
+	const keys = Object.keys(globalAction)
+	let actions = {}
+	for (let i = 0; i < keys.length; i++) {
+		actions[keys[i]] = (state) => dispatch(globalAction[keys[i]](state))
+	}
+	return {
+		dispatchHome: {
+			...actions,
+			ediHometName: (state) => dispatch(homeAction.ediHometName(state)),
+		},
+	}
+	// return {
+	// 	dispatchHome: {
+	// 		editBgColor: () => dispatch(homeAction.editBgColor()),
+	// 		getList: () => dispatch(homeAction.getList()),
+	// 	},
+	// }
+}
+
+// const mapAction = (dispatch) => {
+// 	const keys = (homeAction as any).keys()
+// }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

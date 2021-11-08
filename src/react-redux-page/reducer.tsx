@@ -1,8 +1,8 @@
 const INIT_STATE = {
-	bgColor: "#fe0000",
-	list: [],
+	homeName: "yy",
 }
-const test = (state = INIT_STATE, action: any) => {
+
+const homeReducer = (state = INIT_STATE, action) => {
 	let { type, payload } = action
 	if (type in INIT_STATE) {
 		type = "edit"
@@ -17,4 +17,4 @@ const test = (state = INIT_STATE, action: any) => {
 	}
 	return state
 }
-export default test
+export default homeReducer

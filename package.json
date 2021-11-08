@@ -157,6 +157,6 @@
     "resetMocks": true
   },
   "devDependencies": {
-    "redux-chunk": "^1.0.11"
+    "redux-thunk": "^2.4.0"
   }
 }
