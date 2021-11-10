@@ -1,6 +1,6 @@
-export const colors = (color) => {
+export function setColor(color) {
 	return {
-		type: "GLOBAL_COLOR",
-		color,
+		type: "color",
+		payload: color,
 	}
 }

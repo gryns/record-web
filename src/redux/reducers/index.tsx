@@ -1,5 +1,3 @@
-import { colors } from "../actions"
-
 const GLOABL_COLOR = {
 	color: "red",
 }

@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom"
-export default function Home() {
+import { connect } from "react-redux"
+const home = function (props) {
+	console.log(props)
+
 	return (
 		<div>
 			<p>home</p>
@@ -8,3 +11,11 @@ export default function Home() {
 		</div>
 	)
 }
+
+const mapStateToProps = (state) => {
+	return {
+		home: { ...state },
+	}
+}
+const homePage = connect(mapStateToProps)(home)
+export default homePage
