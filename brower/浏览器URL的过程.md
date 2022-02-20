@@ -20,4 +20,4 @@ TCP/IP分为4层，每一层都要对数据进行封装
 
 参考链接（https://zhuanlan.zhihu.com/p/82956784）
 
-看考链接（https://www.zhihu.com/question/34873227/answer/69726883）
+参考链接（https://www.zhihu.com/question/34873227/answer/69726883）
