@@ -9,7 +9,7 @@
 
 # 例子
 
-```
+```javascript
 var name = 'window'
 var obj = {
     name: 'obj',
@@ -35,7 +35,7 @@ other.bind(obj)() // 'obj'
 - 删除添加的属性
 - 返回函数结果
 
-```
+```javascript
 Function.prototype.myCall = function (fn , ...rest) {
     let context = fn || window;
     // 此处的this就是 getName(){}
@@ -54,7 +54,7 @@ other.myCall(obj) // obj
 
 ## apply()的写法
 
-```
+```javascript
 Function.prototype.myApply = function (fn , ...rest) {
     let context = fn || window;
     context.fn = this;
@@ -72,7 +72,7 @@ other.myApply(obj) // obj
 
 ## bind()的写法,返回值是个函数
 
-```
+```javascript
 Function.prototype.myBind = function (fn, ...rest) {
     let context = fn || window;
     // this就是getName函数，context就是obj对象，所以又转换成了other.apply(obj)
@@ -81,5 +81,6 @@ Function.prototype.myBind = function (fn, ...rest) {
         return func.apply(context, ...rest)
     }
 }
+other.myBind(obj)() // obj
 ```
 觉得对你有帮助点击一个小星星吧! ^_^
