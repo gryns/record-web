@@ -29,7 +29,7 @@ other.bind(obj)() // 'obj'
 ## call()的写法
 
 - 首先判断是否传入对象，否则取值`window`
-- 添加一个属性，并赋值给函数
+- 添加一个属性，并赋值
 - 获取剩余参数`...rest`
 - 执行函数
 - 删除添加的属性
@@ -82,3 +82,4 @@ Function.prototype.myBind = function (fn, ...rest) {
     }
 }
 ```
+觉得对你有帮助点击一个小星星吧! ^_^
