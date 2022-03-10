@@ -10,14 +10,14 @@
 # 例子
 
 ```javascript
-var name = 'window'
+var name = "window"
 var obj = {
-    name: 'obj',
-    getName:function(){
-        console.log(this.name)
-    }
+	name: "obj",
+	getName: function () {
+		console.log(this.name)
+	},
 }
-const other = obj.getName;
+const other = obj.getName
 obj.getName() // 'obj'
 other() // 'window'
 other.apply(obj) // 'obj'
@@ -36,17 +36,17 @@ other.bind(obj)() // 'obj'
 - 返回函数结果
 
 ```javascript
-Function.prototype.myCall = function (fn , ...rest) {
-    let context = fn || window;
-    // 此处的this就是 getName(){}
-    context.fn = this;
-    // 取出参数，或者使用...rest
-    const args = [...arguments].slice(1)
-    // 执行函数fn，其实就是执行getName函数，再说明白一点就是执行obj.getName(),你说这时this指向是不是obj这个对象
-    const res = context.fn(...args)
-    // 使用完删除，释放内存
-    delete context.fn
-    return res;
+Function.prototype.myCall = function (fn, ...rest) {
+	let context = fn || window
+	// 此处的this就是 getName(){}
+	context.fn = this
+	// 取出参数，或者使用...rest
+	const args = [...arguments].slice(1)
+	// 执行函数fn，其实就是执行getName函数，再说明白一点就是执行obj.getName(),你说这时this指向是不是obj这个对象
+	const res = context.fn(...args)
+	// 使用完删除，释放内存
+	delete context.fn
+	return res
 }
 other.myCall() // window
 other.myCall(obj) // obj
@@ -55,16 +55,16 @@ other.myCall(obj) // obj
 ## apply()的写法
 
 ```javascript
-Function.prototype.myApply = function (fn , ...rest) {
-    let context = fn || window;
-    context.fn = this;
-    const args = [...arguments].slice(1) // 第二种方法使用：...rest
-    if(!args){
-        context.fn()
-    }else{
-        context.fn(...rest)
-    }
-    delete context.fn
+Function.prototype.myApply = function (fn, ...rest) {
+	let context = fn || window
+	context.fn = this
+	const args = [...arguments].slice(1) // 第二种方法使用：...rest
+	if (!args) {
+		context.fn()
+	} else {
+		context.fn(...rest)
+	}
+	delete context.fn
 }
 other.myApply() // window
 other.myApply(obj) // obj
@@ -74,13 +74,14 @@ other.myApply(obj) // obj
 
 ```javascript
 Function.prototype.myBind = function (fn, ...rest) {
-    let context = fn || window;
-    // this就是getName函数，context就是obj对象，所以又转换成了other.apply(obj)
-    const func = this;
-    return function () {
-        return func.apply(context, ...rest)
-    }
+	let context = fn || window
+	// this就是getName函数，context就是obj对象，所以又转换成了other.apply(obj)
+	const func = this
+	return function () {
+		return func.apply(context, ...rest)
+	}
 }
 other.myBind(obj)() // obj
 ```
-觉得对你有帮助点击一个小星星吧! ^_^
+
+觉得对你有帮助点击一个小星星吧! ^\_^
