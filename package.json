@@ -158,5 +158,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "dvajs": "^0.1.8"
   }
 }

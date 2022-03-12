@@ -1,9 +1,10 @@
-import { combineReducers, createStore } from "redux"
-import change from "./reducers"
-import names from "./reducers/name"
-const combine = combineReducers({
-	change,
-	names,
+import dav from "dvajs"
+// import home from "./modal"
+const app = dav()
+const stores = app.model({
+	namespace: "home",
+	state: {
+		name: "yy",
+	},
 })
-const stores = createStore(combine)
 export default stores

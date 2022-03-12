@@ -4,22 +4,24 @@
  * @Author: gry
  * @Date: 2021-07-12 09:37:38
  * @LastEditors: gry
- * @LastEditTime: 2021-07-19 14:37:25
+ * @LastEditTime: 2022-03-08 21:51:20
+ *
+ * useState , useEffect , useLayoutEffect,
  */
-import React, { useState, useCallback } from "react";
-import CalcNum from "./calc-num";
-import Child from "./child";
+import React, { useState, useCallback } from "react"
+import CalcNum from "./calc-num"
+import Child from "./child"
 
 const Parent = () => {
-	const [name, setName] = useState("gry");
-	const [child] = useState("parent-child");
+	const [name, setName] = useState("gry")
+	const [child] = useState("parent-child")
 
 	const editName = () => {
-		setName("edit gry");
-	};
+		setName("edit gry")
+	}
 	const editChildName = () => {
-		setName("edit child gry");
-	};
+		setName("edit child gry")
+	}
 	return (
 		<div>
 			<p>{name}</p>
@@ -29,6 +31,6 @@ const Parent = () => {
 			<p>计算--性能</p>
 			<CalcNum />
 		</div>
-	);
-};
-export default Parent;
+	)
+}
+export default Parent

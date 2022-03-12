@@ -4,11 +4,13 @@
  * @return {*}
  */
 import React, { Component } from "react"
-class TestProps extends Component<any, any> {
-	props: {
-		name: String
-		age?: Number
-	}
+interface TestPropsPort {
+	name: String
+	age?: Number
+}
+type HelloWorld = string
+type test = Expect<Equal<HelloWorld, string>>
+class TestProps extends Component<TestPropsPort, any> {
 	static defaultProps = {
 		name: "yy",
 	}

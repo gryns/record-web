@@ -29,7 +29,7 @@ import { connect } from "react-redux"
 const My = (props) => {
 	console.log(props)
 
-	return <div>my</div>
+	return <div style={{ backgroundColor: "red" }}>my</div>
 }
 const mapStateToProps = (state) => {
 	return {

@@ -1,4 +1,4 @@
-import { Provider } from "react-redux"
+import Provider from "dvajs"
 import { BrowserRouter, Route, Switch } from "react-router-dom"
 import stores from "../redux"
 import Home from "./home"

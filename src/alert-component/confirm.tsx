@@ -4,7 +4,7 @@
  * @Author: gry
  * @Date: 2021-06-30 16:18:14
  * @LastEditors: gry
- * @LastEditTime: 2021-08-07 21:31:12
+ * @LastEditTime: 2022-03-08 22:22:41
  */
 
 export interface ConfirmProps {
@@ -27,13 +27,25 @@ const ConfirmD = (props: ConfirmProps) => {
 		close,
 		ok = () => {},
 	} = props
-	const _close = () => {
+	const _close = (): void => {
 		close()
 	}
 	const _ok = () => {
 		close()
 		ok()
 	}
+	interface obj {
+		<T>(key: string): T
+	}
+	// function identity<T>(arg: T): T {
+	// 	return arg
+	// }
+	// function fn<T>(args: T): T {
+	// 	return args
+	// }
+	// const fn1 = <T,>(name: T): T => {
+	// 	return name
+	// }
 	return (
 		<div className="confirm-alert">
 			<div className="confirm-text-mark mark-animate" onClick={_close}></div>
