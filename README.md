@@ -10,3 +10,4 @@
 - [浏览器渲染流程](https://github.com/gryns/record-web/blob/main/brower/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E9%A1%B5%E9%9D%A2.md)
 # JavaScript
 - [call,apply,bind原理](https://github.com/gryns/record-web/blob/main/JavaScript/call%2Capply%2Cbind.md)
+- [模块化的导入导出](https://github.com/gryns/record-web/blob/main/JavaScript/%E6%A8%A1%E5%9D%97%E5%8C%96%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA.md)
