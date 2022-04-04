@@ -16,7 +16,7 @@
 - [cookie 和 session](https://github.com/gryns/record-web/blob/main/brower/cookie%E5%92%8Csession.md)
 - [CSRF 和 XSS](https://github.com/gryns/record-web/blob/main/brower/CSRF%E5%92%8CXSS.md)
 - [强缓存和协商缓存](https://github.com/gryns/record-web/blob/main/brower/%E5%BC%BA%E7%BC%93%E5%AD%98%E5%92%8C%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98.md)
-
+- [HTTP](https://github.com/gryns/record-web/blob/main/Brower/HTTP%E5%8D%8F%E8%AE%AE.md)
 # JavaScript
 
 - [call,apply,bind 原理](https://github.com/gryns/record-web/blob/main/JavaScript/call%2Capply%2Cbind.md)
