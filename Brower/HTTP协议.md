@@ -19,14 +19,14 @@
 
 # 常见请求头(Request Headers)
 
-cookie: 发送 http 请求连接,会把同源下的 cookie 信息带上
-Cache-Control/expires/Pragma: 设置浏览器缓存
-Connection: 是否持久连接
-Content-Type: 设置请求数据的`MIME`类型，设置请求数据类型
-Content-Length: 请求体长度
-Host：请求服务器域名和端口号
+- cookie: 发送 http 请求连接,会把同源下的 cookie 信息带上
+- Cache-Control/expires/Pragma: 设置浏览器缓存
+- Connection: 是否持久连接
+- Content-Type: 设置请求数据的`MIME`类型，设置请求数据类型
+- Content-Length: 请求体长度
+- Host：请求服务器域名和端口号
 
-# 常见请求头(Response Headers)
+# 常见响应头(Response Headers)
 
 Cache-Control: 告诉浏览器是哪种缓存类型
 
