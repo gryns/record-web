@@ -25,6 +25,11 @@
 - Content-Type: 设置请求数据的`MIME`类型，设置请求数据类型
 - Content-Length: 请求体长度
 - Host：请求服务器域名和端口号
+- Accept:指定客户端接收的内容类型
+- Origin: 本地服务地址
+- Host: 服务器的域名和端口
+- Authorization：http 授权证书
+- Connection: 是否持久链接
 
 # 常见响应头(Response Headers)
 
