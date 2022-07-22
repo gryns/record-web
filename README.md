@@ -29,6 +29,7 @@
 - [原型，原型链](https://github.com/gryns/record-web/blob/main/JavaScript/%E5%8E%9F%E5%9E%8B%EF%BC%8C%E5%8E%9F%E5%9E%8B%E9%93%BE.md)
 - [EventBus](https://github.com/gryns/record-web/blob/main/JavaScript/EventBus.md)
 - [事件循环 Event Loop](https://github.com/gryns/record-web/blob/main/JavaScript/JS%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF.md)
+- [大文件分片、断点续传](https://github.com/gryns/record-web/blob/main/JavaScript/%E6%96%87%E4%BB%B6%E5%88%86%E7%89%87%E4%B8%8A%E4%BC%A0%E3%80%81%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0.md)
 
 # JS 手写直达
 
