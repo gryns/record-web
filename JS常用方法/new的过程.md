@@ -10,7 +10,7 @@
 # 创建对象方法
 
 ```javascript
-// 直接复制一个大括号
+// 直接赋值一个大括号
 const a = {}
 // 使用new关键字
 const a = new Object()
