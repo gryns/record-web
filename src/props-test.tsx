@@ -8,8 +8,6 @@ interface TestPropsPort {
 	name: String
 	age?: Number
 }
-type HelloWorld = string
-type test = Expect<Equal<HelloWorld, string>>
 class TestProps extends Component<TestPropsPort, any> {
 	static defaultProps = {
 		name: "yy",
