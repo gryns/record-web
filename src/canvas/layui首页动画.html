@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>layui官网canvas动画</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" height="150" style="border:1px solid #d3d3d3;">
+    </canvas>
+</body>
+<script>
+    window.onload = function () {
+        const el = document.getElementById("canvas")
+        width = document.body.clientWidth - 100
+        height = document.body.clientHeight - 200
+        el.width = width
+        el.height = height
+        const ctx = el.getContext('2d')
+        // ctx.fillStyle = "#FF0000";
+        // ctx.fillRect(0, 0, 150, 75);
+        // ctx.fillText('1234', 10, 50)
+        // 画个圆
+        const drawArc = function (x = 75, y = 75) {
+            ctx.beginPath()
+            ctx.arc(x, y, 50, 0, 2 * Math.PI)
+            ctx.fillStyle = "#009688"
+            ctx.fill()
+            ctx.closePath()
+        }
+        // 移动圆
+        let x = 75,
+            y = 75,
+            clearArc = null,
+            moevFlag = false;
+        const moveArc = function () {
+            ctx.clearRect(0, 0, 200, 200)
+            drawArc(x, y)
+            let moveDistance = 0.2;
+            if (moevFlag) {
+                if (x < 75) {
+                    moevFlag = false
+                }
+                x -= moveDistance
+                y -= moveDistance
+            } else {
+                if (x > 100) {
+                    moevFlag = true
+                }
+                x += moveDistance
+                y += moveDistance;
+            }
+            clearArc = window.requestAnimationFrame(moveArc)
+        }
+        // setInterval(() => {
+        //     moveArc()
+        // }, 50);
+        // 半圆
+        const semiArc = function () {
+            ctx.beginPath()
+            ctx.arc(750, 140, 120, 0, Math.PI, true)
+            ctx.fillStyle = "#ffb800"
+            ctx.fill()
+            ctx.closePath()
+
+        }
+        // 圆角 三角形
+        const trinFn = function (x = 160, y = 300, r = 5) {
+            ctx.beginPath()
+            ctx.moveTo(x, y)
+            ctx.lineTo(210, 400 - Math.sqrt(20 * 20 - 10 * 10))
+            ctx.arcTo(220, 400, 200, 400, r)// 弧
+            ctx.lineTo(120, 400)
+            ctx.arcTo(100, 400, 110, 400 - Math.sqrt(20 * 20 - 10 * 10), r)// 弧
+            ctx.lineTo(150, 300 + Math.sqrt(20 * 20 - 10 * 10))
+            ctx.arcTo(160, 300, 170, 300 + Math.sqrt(20 * 20 - 10 * 10), r)
+            // ctx.lineTo(x, y)
+            ctx.fillStyle = '#ff5722'
+            ctx.fill()
+            ctx.closePath()
+        }
+        /**
+         * 准确来说正方形圆角
+         * 圆角 矩形
+         * x: x轴坐标
+         * y: y坐标 起始坐标
+         * r: 圆角（圆）半径
+         * width: 矩形宽度
+         * color: 填充颜色
+         * **/
+        const rect = function (x = 300, y = 400, r = 30, width = 60, color = "#1e9fff") {
+            ctx.beginPath() // 开始
+            ctx.moveTo(x, y) // 起始坐标 
+            ctx.lineTo(x + width, y) // 水平坐标
+            ctx.arcTo(x + width + r, y, x + width + r, y + r, r) // 创建弧
+            ctx.lineTo(x + width + r, y + width)
+            ctx.arcTo(x + r + width, y + r + width, x + width, y + r + width, r)// 创建弧
+            ctx.lineTo(x + r, y + r + width)
+            ctx.arcTo(x, y + r + width, x, y + width, r)// 创建弧
+            ctx.lineTo(x, y + r)
+            ctx.arcTo(x, y, x + width, y, r)// 创建弧
+            ctx.lineTo(x + width, y) // 水平坐标
+            ctx.fillStyle = color
+            ctx.fill()
+            // ctx.stroke()
+        }
+        moveArc()
+        semiArc()
+        trinFn()
+        rect()
+
+    }
+</script>
+
+</html>

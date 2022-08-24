@@ -4,7 +4,7 @@
  * @Author: gry
  * @Date: 2021-06-29 17:06:08
  * @LastEditors: gry
- * @LastEditTime: 2021-09-24 17:08:36
+ * @LastEditTime: 2022-07-28 16:09:36
  */
 
 import React from "react"
@@ -20,8 +20,9 @@ export interface AlertProps {
 //   return <div>{text}</div>;
 // };
 // export default AlertD;
+// type AlertA = Required<AlertProps>
 
-class AlertC extends React.Component<AlertProps, any> {
+class AlertC extends React.Component<Required<AlertProps>, any> {
 	static defaultProps = {
 		text: "text",
 		close: () => {},

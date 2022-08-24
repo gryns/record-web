@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发布订阅</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /**
+     * 发布订阅(Publisher、Subscriber): Publisher(发布)，消息池（Topic）, Subscriber(订阅)组成
+     * **/
+    class Publisher {
+        constructor() {
+            this.topic = {}
+        }
+        // 订阅
+        on(key, handle) {
+            if (!this.topic[key]) {
+                this.topic[key] = []
+            }
+            this.topic[key].push(handle)
+        }
+        // 发布
+        emit(key, ...rest) {
+            const that = this;
+            if (!this.topic[key]) return
+            this.topic[key].forEach(element => {
+                element.apply(that, rest)
+            });
+        }
+        // 取消订阅
+        off(key, handle) {
+            if (!this.topic[key]) return
+            const delIndex = this.topic[key].findIndex(item => item === handle)
+            console.log('取消订阅');
+            this.topic[key].splice(delIndex, 1)
+        }
+        // 执行一次
+        once(key, handle) {
+            /**
+             * 有必要说明一下，这里注册时，是runOnce函数，执行时也是runOnce函数，并非handle传递过来的函数
+             * **/
+            const that = this;
+            function runOnce() {
+                that.off(key, runOnce)
+                handle.apply(that, arguments)
+            }
+            this.on(key, runOnce)
+        }
+    }
+    const publish = new Publisher()
+    const els = function (name) {
+        console.log('乌克兰', name);
+    }
+    const wkl = function (name) {
+        console.log('俄罗斯', name);
+    }
+    const usa = function (name) {
+        console.log('美国', name);
+    }
+    const rb = function (name) {
+        console.log('日本', name);
+    }
+    console.log('111');
+    publish.on('war', els)
+    publish.on('war', wkl)
+    publish.on('war', usa)
+    publish.once('war', rb)
+    publish.emit('war', '在打仗')
+    publish.off('war', usa)
+    console.log('*******');
+    publish.emit('war', '在打仗')
+</script>
+
+</html>

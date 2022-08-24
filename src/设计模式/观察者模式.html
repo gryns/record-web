@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>观察者模式</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /**
+     * 观察者模式（Subject、Observer）：一对多的依赖关系，当对象发生改变，就去通知依赖它的对象，目标对象Subject , 观察者Observer
+     * **/
+    // 目标对象
+    class Subject {
+        constructor() {
+            this.observerList = []
+        }
+        on(handle) {
+            this.observerList.push(handle)
+        }
+        notify(task) {
+            this.observerList.forEach(element => {
+                element.update(task)
+            });
+        }
+    }
+    // 订阅者
+    class Observer {
+        constructor(name) {
+            this.name = name
+        }
+        update(info) {
+            console.log(this.name, info);
+        }
+    }
+    const subject = new Subject()
+    const ob1 = new Observer('ob1')
+    const ob2 = new Observer('ob2')
+    subject.on(ob1)
+    subject.on(ob2)
+    subject.notify("开始搬砖")
+</script>
+
+</html>
