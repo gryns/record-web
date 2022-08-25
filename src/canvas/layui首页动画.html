@@ -44,26 +44,26 @@
             ctx.closePath()
         }
         // 移动圆
-        let x = 75,
-            y = 75,
+        let xArc = 75,
+            yArc = 75,
             clearArc = null,
-            moevFlag = false;
+            moveFlag = false;
         const moveArc = function () {
             ctx.clearRect(0, 0, 200, 200)
-            drawArc(x, y)
+            drawArc(xArc, yArc)
             let moveDistance = 0.2;
-            if (moevFlag) {
-                if (x < 75) {
-                    moevFlag = false
+            if (moveFlag) {
+                if (xArc < 75) {
+                    moveFlag = false
                 }
-                x -= moveDistance
-                y -= moveDistance
+                xArc -= moveDistance
+                yArc -= moveDistance
             } else {
-                if (x > 100) {
-                    moevFlag = true
+                if (xArc > 100) {
+                    moveFlag = true
                 }
-                x += moveDistance
-                y += moveDistance;
+                xArc += moveDistance
+                yArc += moveDistance;
             }
             clearArc = window.requestAnimationFrame(moveArc)
         }
@@ -79,21 +79,31 @@
             ctx.closePath()
 
         }
-        // 圆角 三角形
-        const trinFn = function (x = 160, y = 300, r = 5) {
+        /**
+         * 圆角 三角形
+         * **/
+        const trinFn = function ({ x = 160, y = 300, r = 5, width = 120 } = {}) {
+            let h = Math.floor(Math.sqrt(width * width - ((width / 2) * (width / 2))))
+            const arcWidth = r * 2;
+            const harfWidth = width / 2;
+            const reallyWidthAdd = x + harfWidth; // 160 + 120 / 2
+            const reallyWidthReduce = x - harfWidth; // 160 - 120 / 2
+            const sqrt = Math.floor(Math.sqrt(arcWidth * 2 * arcWidth * 2 - arcWidth * arcWidth))
+
             ctx.beginPath()
             ctx.moveTo(x, y)
-            ctx.lineTo(210, 400 - Math.sqrt(20 * 20 - 10 * 10))
-            ctx.arcTo(220, 400, 200, 400, r)// 弧
-            ctx.lineTo(120, 400)
-            ctx.arcTo(100, 400, 110, 400 - Math.sqrt(20 * 20 - 10 * 10), r)// 弧
-            ctx.lineTo(150, 300 + Math.sqrt(20 * 20 - 10 * 10))
-            ctx.arcTo(160, 300, 170, 300 + Math.sqrt(20 * 20 - 10 * 10), r)
+            ctx.lineTo(reallyWidthAdd - arcWidth, y + h - sqrt)
+            ctx.arcTo(reallyWidthAdd, y + h, reallyWidthAdd - arcWidth * 2, y + h, r)// 弧
+            ctx.lineTo(reallyWidthReduce + arcWidth * 2, y + h)
+            ctx.arcTo(reallyWidthReduce, y + h, reallyWidthReduce + arcWidth, y + h - sqrt, r)// 弧
+            ctx.lineTo(x - arcWidth, y + sqrt)
+            ctx.arcTo(x, y, x + arcWidth, y + sqrt, r)
             // ctx.lineTo(x, y)
             ctx.fillStyle = '#ff5722'
             ctx.fill()
             ctx.closePath()
         }
+        // trinFn()
         /**
          * 准确来说正方形圆角
          * 圆角 矩形
@@ -103,7 +113,7 @@
          * width: 矩形宽度
          * color: 填充颜色
          * **/
-        const rect = function (x = 300, y = 400, r = 30, width = 60, color = "#1e9fff") {
+        const rect = function ({ x = 300, y = 400, r = 30, width = 60, color = "#1e9fff" } = {}) {
             ctx.beginPath() // 开始
             ctx.moveTo(x, y) // 起始坐标 
             ctx.lineTo(x + width, y) // 水平坐标
@@ -119,10 +129,36 @@
             ctx.fill()
             // ctx.stroke()
         }
+        // 移动 矩形
+        let xRect = 200,
+            yRect = 400,
+            moveRectFla = false,
+            distanceRect = 0.1,
+            clearRect = null;
+        const moveRect = function () {
+            ctx.clearRect(100, 400, 300, 300)
+            trinFn({ x: xRect, y: yRect, width: 120, r: 5 })
+            // ctx.rotate(Math.PI / 120)
+            if (moveRectFla) {
+                if (xRect < 200) {
+                    moveRectFla = false
+                }
+                xRect -= distanceRect
+                yRect -= distanceRect;
+            } else {
+                if (xRect > 220) {
+                    moveRectFla = true
+                }
+                xRect += distanceRect
+                yRect += distanceRect;
+            }
+            clearRect = window.requestAnimationFrame(moveRect)
+        }
+        console.log(ctx);
+        moveRect()
         moveArc()
         semiArc()
-        trinFn()
-        rect()
+        rect({ x: 700, y: 300, width: 100, r: 50 })
 
     }
 </script>
